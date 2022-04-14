@@ -3,7 +3,7 @@
 # VERSION 1.0
 #
 
-FROM php:5.6-apache
+FROM php:7.2-apache
 MAINTAINER Heimo Müller <heimo.mueller@mac.com>
 
 ENV MANTIS_VERSION=2.25.0
@@ -22,7 +22,7 @@ RUN set -xe \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -xe \
-    && curl -fSL ${MANTIS_URL} -o ${MANTIS_FILE} \
+    && curl --insecure -fSL ${MANTIS_URL} -o ${MANTIS_FILE} \
     && echo "${MANTIS_SHA1}  ${MANTIS_FILE}" | sha1sum -c \
     && tar -xz --strip-components=1 -f ${MANTIS_FILE} \
     && rm ${MANTIS_FILE} \
@@ -31,3 +31,4 @@ RUN set -xe \
 RUN set -xe \
     && ln -sf /usr/share/zoneinfo/${MANTIS_TIMEZONE} /etc/localtime \
     && echo 'date.timezone = "${MANTIS_TIMEZONE}"' > /usr/local/etc/php/php.ini
+
