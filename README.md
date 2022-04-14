@@ -1,2 +1,8 @@
-# -home-simon-Documents-Arbeit_med_Uni-mantis-app-mantis-images
-Docker image for the mantis bug tracker
+# img-mantis
+Docker image for [Mantis Bug Tracker](https://www.mantisbt.org/).
+
+## Envoronment Variables
+ * None
+ 
+## Exposed Ports
+ * None
